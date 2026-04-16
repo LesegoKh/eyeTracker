@@ -56,8 +56,8 @@ window.onload = function () {
             const eyeY = positions[27][1]; 
 
             gsap.to("#custom-cursor", {
-                x: eyeX - 10,
-                y: eyeY - 10,
+                x: eyeX - 5,
+                y: eyeY - 5,
                 duration: 0.2,
                 ease: "power2.out"
             });
