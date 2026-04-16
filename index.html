@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeuroCursor - Eye-Tracking PWA</title>
-   
-    <!-- PWA & Meta Tags -->
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- Only Use One clmtrackr Version -->
-    <script src="https://cdn.jsdelivr.net/npm/clmtrackr@1.1.2/clmtrackr.min.js"></script>
-
-    <meta name="theme-color" content="#0ff">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- GSAP & WebGazer -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroCursor - Eye-Tracking PWA</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #111; color: white; text-align: center; }
+  #custom-cursor {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .status-box {
+    background: rgba(0,0,0,0.5);
+    padding: 10px;
+    margin: 10px auto;
+    width: 300px;
+    border-radius: 5px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
 </head>
 <body>
 
-    <!-- Custom Cursor -->
-    <div id="custom-cursor"></div>
+<h1>NeuroCursor Calibration</h1>
+<p>Follow the dots to calibrate eye-tracking.<br>Please click start calibration to begin.</p>
+<button id="start-calibration">Start Calibration</button>
 
-    <!-- Calibration Screen -->
-    <div id="calibration-overlay">
-        <h1>NeuroCursor Calibration</h1>
-        <p>Follow the dots to calibrate eye-tracking.</p>
-        <p id="calibration-status">Please click start calibration to begin.</p>
-        <button id="start-calibration">Start Calibration</button>
-    </div>
+<div class="status-box">
+  <div>Eye Tracking: <span id="eye-tracking-status">Inactive</span></div>
+  <div>Cursor X: <span id="cursor-x">0</span></div>
+  <div>Cursor Y: <span id="cursor-y">0</span></div>
+  <div>Blink Detection: <span id="blink-status">None</span></div>
+</div>
 
-    <!-- HUD (Status Panel) -->
-    <div id="hud">
-        <p>Eye Tracking: <span id="tracking-status">Inactive</span></p>
-        <p>Cursor X: <span id="cursor-x">0</span></p>
-        <p>Cursor Y: <span id="cursor-y">0</span></p>
-        <p>Blink Detection: <span id="blink-status">None</span></p>
-    </div>
+<div id="custom-cursor"></div>
 
-    <!-- Main JS -->
-    <script src="app.js" defer></script>
+<!-- Dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clmtrackr/1.1.2/clmtrackr.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clmtrackr/1.1.2/models/model_pca_20_svm.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
 
+<!-- App logic -->
+<script src="app.js" defer></script>
 </body>
 </html>
